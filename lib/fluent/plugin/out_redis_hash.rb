@@ -52,7 +52,7 @@ module Fluent
     end
 
     def write(chunk)
-      @redis.pipelined {
+#      @redis.pipelined {
         chunk.open { |io|
           begin
             MessagePack::Unpacker.new(io).each.each_with_index { |data, index|
@@ -64,7 +64,7 @@ module Fluent
             # EOFError always occured when reached end of chunk.
           end
         }
-      }
+#      }
     end
   end
 end
