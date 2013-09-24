@@ -9,10 +9,9 @@ config file
 <match node.*>
     type redis_hash
     flush_interval 10s
-    urls redis://localhost:6379
-    db_number 0
+    urls redis://localhost:6379, redis://localhost:6380
     hash_key_pattern %{record['key']}
-    hash_field_pattern field
+    hash_field_pattern fixed_field
     hash_value_pattern %{record['value']}
 </match>
 ```
